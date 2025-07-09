@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whizper - Intelligent Voice Learning Assistant</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fas fa-headphones-alt"></i>
+                <h1>Whizper</h1>
+            </div>
+            <div class="nav-links">
+                <a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+                <a href="#features" class="nav-link"><i class="fas fa-star"></i> Features</a>
+                <a href="#get-started" class="nav-link"><i class="fas fa-rocket"></i> Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Transform Learning Through Voice Intelligence</h2>
+            <p>Experience education without boundaries - where every text becomes a conversation</p>
+            <div class="cta-buttons">
+                <button class="primary-btn" onclick="window.location.href='/upload'">
+                    <i class="fas fa-upload"></i> Start Learning
+                </button>
+                <button class="secondary-btn" onclick="window.location.href='/demo'">
+                    <i class="fas fa-play"></i> Experience Whizper
+                </button>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Intelligent Learning Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    <h3>Intelligent Text Recognition</h3>
+                    <p>Advanced AI that understands both digital and handwritten content with remarkable accuracy</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Dynamic Summarization</h3>
+                    <p>Transform complex materials into clear, concise knowledge that's easy to understand</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Universal Language</h3>
+                    <p>Break language barriers with instant translation and cultural context adaptation</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Conversation</h3>
+                    <p>Engage in natural dialogues with an AI that understands your learning style</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="get-started" class="get-started">
+            <h2>Begin Your Learning Evolution</h2>
+            <p>Join thousands of learners discovering education without limits</p>
+            <button class="primary-btn large" onclick="window.location.href='/upload'">
+                <i class="fas fa-graduation-cap"></i> Transform Your Learning
+            </button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navigate</h3>
+                <a href="/about">Our Story</a>
+                <a href="/privacy">Privacy Commitment</a>
+                <a href="/contact">Connect With Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Join Our Community</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Crafted with <i class="fas fa-heart"></i> for limitless learning</p>
+        </div>
+    </footer>
+</body>
+</html>

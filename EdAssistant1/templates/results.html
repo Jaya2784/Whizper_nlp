@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Whizper</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fas fa-headphones-alt"></i>
+                <h1>Whizper</h1>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+                <a href="/upload" class="nav-link"><i class="fas fa-upload"></i> Upload New</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="results-section">
+            <div class="section-content">
+                <div class="results-header">
+                    <h2><i class="fas fa-check-circle"></i> Content Processed Successfully</h2>
+                    <p class="results-description">Your content has been processed and is ready for interaction</p>
+                </div>
+
+                <div class="results-container">
+                    <div class="results-controls">
+                        <button class="control-btn" id="playButton" onclick="playAudio()">
+                            <i class="fas fa-play"></i> Listen
+                        </button>
+                        <button class="control-btn" id="pauseButton" onclick="pauseAudio()" style="display: none;">
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <button class="control-btn" id="rewindButton" onclick="rewindAudio()">
+                            <i class="fas fa-undo"></i> Rewind
+                        </button>
+                        <button class="control-btn" id="downloadButton" onclick="downloadAudio()">
+                            <i class="fas fa-download"></i> Download Audio
+                        </button>
+                        <div class="speed-control">
+                            <label for="speed">Speed:</label>
+                            <select id="speed" class="speed-select">
+                                <option value="0.75">0.75x</option>
+                                <option value="1" selected>1x</option>
+                                <option value="1.25">1.25x</option>
+                                <option value="1.5">1.5x</option>
+                                <option value="2">2x</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="content-display">
+                        <div class="tab-controls">
+                            <button class="tab-btn active" data-tab="text">
+                                <i class="fas fa-file-alt"></i> Text
+                            </button>
+                            <button class="tab-btn" data-tab="summary">
+                                <i class="fas fa-list"></i> Summary
+                            </button>
+                            <button class="tab-btn" data-tab="qa">
+                                <i class="fas fa-question-circle"></i> Q&A
+                            </button>
+                        </div>
+
+                        <div class="tab-content active" id="text-content">
+                            <div class="text-container">
+                                {{ original_text | safe }}
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="summary-content">
+                            <div class="summary-container">
+                                {{ summary | safe }}
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="qa-content">
+                            <div class="qa-container">
+                                <div class="qa-input">
+                                    <input type="text" placeholder="Ask a question about the content..." id="question-input">
+                                    <button class="primary-btn" id="ask-btn">
+                                        <i class="fas fa-paper-plane"></i> Ask
+                                    </button>
+                                </div>
+                                <div class="qa-history">
+                                    <!-- Q&A interactions will appear here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navigate</h3>
+                <a href="/">Home</a>
+                <a href="/about">Our Story</a>
+                <a href="/privacy">Privacy Commitment</a>
+            </div>
+            <div class="footer-section">
+                <h3>Join Our Community</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Crafted with <i class="fas fa-heart"></i> for limitless learning</p>
+        </div>
+    </footer>
+
+    <!-- Embed the original and summary text as data-* attributes to make them available to JavaScript -->
+    <div id="content" 
+         data-original-filename="{{ original_filename }}" 
+         data-original-text="{{ original_text | safe }}" 
+         data-summary-text="{{ summary | safe }}">
+    </div>
+
+    <script src="{{ url_for('static', filename='js/result.js') }}"></script>
+</body>
+</html>

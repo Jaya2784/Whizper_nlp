@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Whizper</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fas fa-headphones-alt"></i>
+                <h1>Whizper</h1>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="#mission" class="nav-link"><i class="fas fa-bullseye"></i> Vision</a>
+                <a href="#features" class="nav-link"><i class="fas fa-star"></i> Innovation</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="mission" class="mission-section">
+            <div class="section-content">
+                <h2><i class="fas fa-lightbulb"></i> Pioneering Accessible Education</h2>
+                <p class="mission-text">
+                    At Whizper, we envision a world where knowledge knows no boundaries. Our mission is to revolutionize 
+                    educational accessibility through cutting-edge AI technology, ensuring every learner can engage with 
+                    content naturally and effectively, regardless of visual abilities.
+                </p>
+            </div>
+        </section>
+
+        <section class="problem-solution">
+            <div class="section-content">
+                <div class="problem-card">
+                    <h2><i class="fas fa-exclamation-circle"></i> The Educational Frontier</h2>
+                    <p>Today's learning landscape presents unique challenges:</p>
+                    <ul>
+                        <li>Complex visual content remains inaccessible to many</li>
+                        <li>Traditional learning methods create unnecessary barriers</li>
+                        <li>Information overload hinders effective learning</li>
+                        <li>One-size-fits-all approaches limit potential</li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <h2><i class="fas fa-check-circle"></i> Our Innovation</h2>
+                    <p>Whizper's revolutionary approach delivers:</p>
+                    <ul>
+                        <li>State-of-the-art AI-powered content understanding</li>
+                        <li>Contextual learning adaptation</li>
+                        <li>Seamless voice-based interaction</li>
+                        <li>Personalized learning experiences</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-detail">
+            <div class="section-content">
+                <h2><i class="fas fa-star"></i> Transformative Technology</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fas fa-microchip"></i>
+                        <div class="feature-text">
+                            <h3>Neural Processing</h3>
+                            <p>Advanced neural networks process and understand educational content with human-like comprehension.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-fingerprint"></i>
+                        <div class="feature-text">
+                            <h3>Adaptive Learning</h3>
+                            <p>Personalized AI algorithms that evolve with your learning style and preferences.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-network-wired"></i>
+                        <div class="feature-text">
+                            <h3>Semantic Understanding</h3>
+                            <p>Deep learning models that grasp context and nuance in educational materials.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-universal-access"></i>
+                        <div class="feature-text">
+                            <h3>Universal Design</h3>
+                            <p>Built from the ground up with accessibility and inclusivity as core principles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="section-content">
+                <h2>Join the Learning Revolution</h2>
+                <p>Experience the future of accessible education today</p>
+                <button class="primary-btn large" onclick="window.location.href='/upload'">
+                    <i class="fas fa-rocket"></i> Start Your Journey
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navigate</h3>
+                <a href="/">Home</a>
+                <a href="/privacy">Privacy Commitment</a>
+                <a href="/contact">Connect With Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Join Our Community</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Crafted with <i class="fas fa-heart"></i> for limitless learning</p>
+        </div>
+    </footer>
+</body>
+</html>

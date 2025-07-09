@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Content - Whizper</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fas fa-headphones-alt"></i>
+                <h1>Whizper</h1>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="upload-section">
+            <div class="section-content">
+                <h2><i class="fas fa-cloud-upload-alt"></i> Upload Your Content</h2>
+                <p class="upload-description">Transform your educational materials into accessible audio content</p>
+                
+                <div class="upload-container" id="upload-container">
+                    {% if error %}
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        {{ error }}
+                    </div>
+                    {% endif %}
+                    <form action="/upload" method="post" enctype="multipart/form-data" id="upload-form">
+                        <div class="upload-area" id="drop-zone">
+                            <i class="fas fa-file-upload"></i>
+                            <p class="upload-text">Drag and drop your files here</p>
+                            <p class="upload-subtext">or</p>
+                            <label for="file-input" class="upload-btn">
+                                Choose File
+                                <input type="file" id="file-input" name="file" accept=".pdf,.jpg,.jpeg,.png" hidden>
+                            </label>
+                            <p class="file-types">Supported formats: PDF, JPG, PNG</p>
+                        </div>
+                        <div class="selected-file" id="selected-file">
+                            <p>No file selected</p>
+                        </div>
+                        <button type="submit" class="primary-btn upload-submit" disabled>
+                            <i class="fas fa-magic"></i> Process Content
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-mini">
+            <div class="section-content">
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Multiple Formats</h3>
+                        <p>Support for PDFs, images, and handwritten notes</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure Processing</h3>
+                        <p>Your content is processed securely and privately</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Fast Results</h3>
+                        <p>Quick processing with advanced AI technology</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navigate</h3>
+                <a href="/">Home</a>
+                <a href="/about">Our Story</a>
+                <a href="/privacy">Privacy Commitment</a>
+            </div>
+            <div class="footer-section">
+                <h3>Join Our Community</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Crafted with <i class="fas fa-heart"></i> for limitless learning</p>
+        </div>
+    </footer>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const selectedFile = document.getElementById('selected-file');
+        const submitButton = document.querySelector('.upload-submit');
+
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        // Highlight drop zone when item is dragged over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        // Handle dropped files
+        dropZone.addEventListener('drop', handleDrop, false);
+        fileInput.addEventListener('change', handleFiles, false);
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function highlight(e) {
+            dropZone.classList.add('highlight');
+        }
+
+        function unhighlight(e) {
+            dropZone.classList.remove('highlight');
+        }
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles({ target: { files: files } });
+        }
+
+        function handleFiles(e) {
+            const files = e.target.files;
+            if (files.length) {
+                updateFileInfo(files[0]);
+                submitButton.disabled = false;
+            }
+        }
+
+        function updateFileInfo(file) {
+            selectedFile.innerHTML = `
+                <div class="file-info">
+                    <i class="fas fa-file-alt"></i>
+                    <span>${file.name}</span>
+                    <small>${(file.size / (1024 * 1024)).toFixed(2)} MB</small>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
